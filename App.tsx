@@ -1,13 +1,13 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import {BaseNavigationContainer} from '@react-navigation/native';
-import Routes from './routes';
+import {NavigationContainer} from '@react-navigation/native';
+import Routes from './src/routes';
 
 export default function App() {
   return (
-    <BaseNavigationContainer >
-      <StatusBar style="light" />
+    <NavigationContainer >
+      <StatusBar style="dark" />
       <Routes />
-    </BaseNavigationContainer>
+    </NavigationContainer>
   );
 }
