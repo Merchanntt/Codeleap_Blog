@@ -1,8 +1,12 @@
 import styled from 'styled-components/native'
 
-export const InputContainer = styled.View`
+interface InputContainerProps {
+  isContentInput: boolean
+}
+
+export const InputContainer = styled.View<InputContainerProps>`
   width: 100%;
-  height: 68px;
+  height: ${props => props.isContentInput ? 300 : 68}px;
   padding: 0 16px;
   border-radius: 10px;
   margin-bottom: 8px;

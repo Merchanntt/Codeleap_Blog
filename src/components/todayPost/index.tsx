@@ -1,5 +1,7 @@
+import { useNavigation } from '@react-navigation/core';
 import React from 'react';
 import { RectButtonProps } from 'react-native-gesture-handler';
+import { IArticleData } from '../../pages/dashboard';
 
 import { 
     Container,
@@ -12,16 +14,31 @@ import {
     PostTimeToRead
   } from './styles';
 
-const TodayPost: React.FC<RectButtonProps> = ({...rest}) => {
+  interface TodayPostProps extends RectButtonProps{
+    article: IArticleData;
+  }
+
+const TodayPost: React.FC<TodayPostProps> = ({article, ...rest}) => {
+  const {navigate} = useNavigation()
+
+  function handleOpenPostPage(article: IArticleData) {
+    navigate('PostPage', article)
+  }
+
   return (
-    <Container {...rest}>
+    <Container onPress={() => handleOpenPostPage(article)} {...rest}>
       <TodayPostTitle>Today's Article</TodayPostTitle>
       <PostContainer>
-        <PostTitle>My First Post</PostTitle>
-        <PostSummary>Caso você solicite o serviço até às 14h30, o dinheiro estará na sua conta, no mesmo dia. Depois deste horário, você terá o dinheiro em até 1 dia útil, sujeito à análise.</PostSummary>
+        <PostTitle>{article.postTitle}</PostTitle>
+        <PostSummary 
+          numberOfLines={4} 
+          ellipsizeMode='tail'
+        >
+          {article.postContent}
+        </PostSummary>
         <TimeContainer>
-          <PostDate>10/11/2021</PostDate>
-          <PostTimeToRead>3 min read</PostTimeToRead>
+          <PostDate>{article.createdAt}</PostDate>
+          <PostTimeToRead>{article.readTime} min read</PostTimeToRead>
         </TimeContainer>
       </PostContainer>
     </Container>

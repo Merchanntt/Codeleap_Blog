@@ -1,13 +1,21 @@
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import {NavigationContainer} from '@react-navigation/native';
+import { StatusBar } from 'expo-status-bar';
+import { NavigationContainer } from '@react-navigation/native';
+import { Provider } from 'react-redux';
+
 import Routes from './src/routes';
+import store from './src/store/redux';
+import BottomSheet from './src/components/bottomSheet';
 
 export default function App() {
   return (
     <NavigationContainer >
-      <StatusBar style="dark" />
-      <Routes />
+      <Provider store={store}>
+          <BottomSheet>
+          <StatusBar style="dark" />
+            <Routes />
+          </BottomSheet>
+      </Provider>
     </NavigationContainer>
   );
 }

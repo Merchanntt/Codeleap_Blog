@@ -7,8 +7,13 @@ export const Container = styled.View`
 `;
 
 export const Header = styled.View`
-  align-items: flex-start;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 `;
+
+export const SaluteContainer = styled.View``;
+
 
 export const UserNameText = styled.Text`
   color: #232129;

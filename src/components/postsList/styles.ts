@@ -1,8 +1,10 @@
 import styled from 'styled-components/native';
+import {RectButton} from 'react-native-gesture-handler'
 
 export const Container = styled.View`
   flex: 1;
   margin-top: 30px;
+  height: 350px;
   border-top-width: 1px;
   border-top-color: #e1e1e6;
 `;
@@ -22,7 +24,7 @@ export const MainList = styled.FlatList`
   padding: 0 8px;
 `;
 
-export const ArticleContainer = styled.View`
+export const ArticleContainer = styled(RectButton)`
   border-bottom-width: 1px;
   border-bottom-color: #e1e1e6;
 `;

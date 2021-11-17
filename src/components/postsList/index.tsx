@@ -1,4 +1,6 @@
+import { useNavigation } from '@react-navigation/core';
 import React from 'react';
+import { IArticleData } from '../../pages/dashboard';
 
 import { 
     Container, 
@@ -13,77 +15,17 @@ import {
     ArticleReadTime,
   } from './styles';
 
-interface ArticleData {
-  id: number;
-  name: string;
-  createdDate: string;
-  timeToRead: string;
-};
+  interface PostListProps {
+    posts: IArticleData[];
+  }
 
-const PostsList: React.FC = () => {
-  const posts: ArticleData[] = [
-    {
-      id: 1,
-      name: 'Make a Successful instagram',
-      createdDate: 'November 11, 2021',
-      timeToRead: '3 min Read'
-    },
-    {
-      id: 2,
-      name: 'Make a Successful instagram',
-      createdDate: 'November 11, 2021',
-      timeToRead: '3 min Read'
-    },
-    {
-      id: 3,
-      name: 'Make a Successful instagram',
-      createdDate: 'November 11, 2021',
-      timeToRead: '3 min Read'
-    },
-    {
-      id: 4,
-      name: 'Make a Successful instagram',
-      createdDate: 'November 11, 2021',
-      timeToRead: '3 min Read'
-    },
-    {
-      id: 5,
-      name: 'Make a Successful instagram',
-      createdDate: 'November 11, 2021',
-      timeToRead: '3 min Read'
-    },
-    {
-      id: 6,
-      name: 'Make a Successful instagram',
-      createdDate: 'November 11, 2021',
-      timeToRead: '3 min Read'
-    },
-    {
-      id: 7,
-      name: 'Make a Successful instagram',
-      createdDate: 'November 11, 2021',
-      timeToRead: '3 min Read'
-    },
-    {
-      id: 8,
-      name: 'Make a Successful instagram',
-      createdDate: 'November 11, 2021',
-      timeToRead: '3 min Read'
-    },
-    {
-      id: 9,
-      name: 'Make a Successful instagram',
-      createdDate: 'November 11, 2021',
-      timeToRead: '3 min Read'
-    },
-    {
-      id: 10,
-      name: 'Make a Successful instagram',
-      createdDate: 'November 11, 2021',
-      timeToRead: '3 min Read'
-    }
-  ]
+const PostsList: React.FC<PostListProps> = ({posts}) => {
+  const { navigate } = useNavigation()
 
+  function handleOpenPost(post: IArticleData) {
+    navigate('PostPage', post)
+  }
+  
   return (
     <Container>
       <Header>
@@ -93,14 +35,14 @@ const PostsList: React.FC = () => {
         data={posts}
         keyExtractor={(item) => String(item.id)}
         renderItem={({ item }) => (
-          <ArticleContainer>
+          <ArticleContainer onPress={() => handleOpenPost(item)}>
             <ArticleInfoContainer>
-              <ArticleTitle>{item.name}</ArticleTitle>
+              <ArticleTitle>{item.postTitle}</ArticleTitle>
             </ArticleInfoContainer>
 
               <ArticleTimeContainer>
-                <ArticleDate>{item.createdDate}</ArticleDate>
-                <ArticleReadTime>{item.timeToRead}</ArticleReadTime>
+                <ArticleDate>{item.createdAt}</ArticleDate>
+                <ArticleReadTime>{item.readTime}</ArticleReadTime>
               </ArticleTimeContainer>
 
           </ArticleContainer>

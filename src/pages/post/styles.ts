@@ -1,4 +1,3 @@
-import { Platform } from 'react-native';
 import styled from 'styled-components/native'
 
 export const Container = styled.View`
@@ -9,7 +8,16 @@ export const Header = styled.View`
   background-color: #232129;
   padding: 30px;
   width: 100%;
-  height: 15%;
+  height: 90px;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+`;
+
+export const EditButtonsContainer = styled.View`
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
 `;
 
 export const Article = styled.ScrollView`

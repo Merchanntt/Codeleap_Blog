@@ -1,4 +1,23 @@
 {
-  "users": [],
-  "articles": []
+  "users": [
+    {
+      "id": 36.630659321797495,
+      "username": "Merchanntt"
+    },
+    {
+      "id": 0.2070635589663472,
+      "username": "Adolfocornelius"
+    }
+  ],
+  "articles": [
+    {
+      "id": 80914573570198457,
+        "creatorId": 36.630659321797495,
+        "creatorUsername": "Merchanntt",
+        "postTitle": "My First Post",
+        "postContent": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis aut corrupti sequi dolor necessitatibus eum sint qui eligendi, itaque laudantium in, est accusamus! Enim provident explicabo ipsam in! Beatae, nam.",
+        "createdAt": "17 November, 2021",
+        "readTime": "3 min read"
+    }
+  ]
 }
